@@ -3,51 +3,64 @@
 import React from 'react';
 import { useState } from 'react';
 import 'leaflet/dist/leaflet.css';
-import {TileLayer } from 'react-leaflet';
 import {Sidebar, SidebarItem} from './components/ui/sidebar.js';
 import {Card, CardContent} from './components/ui/card.js';
-import dynamic from "next/dynamic";
+import NewsCard from './components/newscard.js';
+import Map from './components/map.js';
+import Graph from './components/graph.js';
+import Image from 'next/image.js';
+import lulc2020 from './components/images/karura_2020_map.png'
+import lulc2025 from './components/images/karura_2025_map.png'
 
-const MapContainer = dynamic(() => import("react-leaflet").then((mod) => mod.MapContainer), { 
-  ssr: false 
-});
 
 export default function KaruraDashboard() {
-  const [selectedLayer, setSelectedLayer] = useState('ndvi');
+  const [selectedLayer, setSelectedLayer] = useState('basemap');
 
   return (
     <div className="flex h-screen bg-green-900 text-white">
-      {/*Sidebar*/}  
-      <Sidebar className="w-1/5 bg-green-800">
-        <h2>Karura Forest Deforestation Analysis</h2>
-        <SidebarItem onClick={() => setSelectedLayer('current')}>Current Bird View</SidebarItem>
-        <SidebarItem onClick={() => setSelectedLayer('change_detection')}>Forest Cover Trend</SidebarItem>
-        <SidebarItem onClick={() => setSelectedLayer('hotspots')}>Deforestation Hotspots</SidebarItem>
-      </Sidebar>
-
+      <div className="w-1/5">
+        <Sidebar className="bg-green-800">
+            <SidebarItem onClick={() => setSelectedLayer('basemap')}>Basemap</SidebarItem>
+            <SidebarItem onClick={() => setSelectedLayer('deforestation')}>
+              Deforestation Hotspots
+            </SidebarItem>
+            <SidebarItem onClick={() => setSelectedLayer('forestcover')}>
+              Forest Cover
+            </SidebarItem>
+        </Sidebar>
+      </div>
       {/*Main Content*/}
       <div className='w-4/5 flex flex-col'>
         <h1>Deforestation Monitoring Dashboard - Karura Forest</h1>
-        <div className="h-2/3 rounded-lg overflow-hidden shadow-lg border-2 border-green-700">
-            <MapContainer center={[-1.2864, 36.8172]} zoom={12} className="h-[700px] w-full">
-              <TileLayer
-                url={`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?layer=${selectedLayer}`}
-              />
-            </MapContainer>
-        </div>
+        <Map selectedLayer={selectedLayer}/>
 
         {/*Analytics*/}
-        <div className='mt-4 grid grid-cols-3'>
-          <Card className="col-span-1 rounded-md shadow-md">
+        <div className='mt-4 grid grid-cols-1 md:grid-cols-3'>
+          <Card className="md:col-span-1 rounded-md shadow-md">
             <CardContent>
               <h2>Deforestation Rate</h2>
               <p>0.5% per year</p>
             </CardContent>
           </Card>
-          <Card className="col-span-1 rounded-md shadow-md">
+          <Card className="md:col-span-1 rounded-md shadow-md">
             <CardContent>
-              <h2>Forest Cover</h2>
-              <p>80%</p>
+              <h1 className='text-lg font-semibold'>Forest cover trend</h1>
+              <Graph/>
+            </CardContent>
+          </Card>
+          <Card className="md:col-span-1 rounded-md shadow-md">
+            <NewsCard/>
+          </Card>
+          <Card className="md:col-span-1 rounded-md shadow-md">
+            <CardContent>
+              <h1 className='text-lg font-semibold'>Karura and environs land cover in 2020</h1>
+              <Image src={lulc2020} alt='LULC 2020 in Karura and Environs' width={500} height={400} className="rounded-md"/>
+            </CardContent>
+          </Card>
+          <Card className="md:col-span-1 rounded-md shadow-md">
+            <CardContent>
+              <h1 className='text-lg font-semibold'>Karura and environs land cover in 2025</h1>
+              <Image src={lulc2025} alt='LULC 2025 in Karura and Environs' width={500} height={400} className="rounded-md"/>
             </CardContent>
           </Card>
         </div>
