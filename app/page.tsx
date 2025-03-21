@@ -17,9 +17,9 @@ import  Map from './components/map.js';
 
 export default function KaruraDashboard() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const openModal = (image) => {
+  const openModal = (image: string) => {
     setIsOpen(true);
     setSelectedImage(image);
   }
@@ -27,9 +27,9 @@ export default function KaruraDashboard() {
   return (
     <div className="flex h-full bg-green-900 text-white">
       <div className="w-1/5">
-        <Sidebar className= "h-screen">
+        <Sidebar className= "h-full">
           <SidebarItem>
-          <h1>Deforestation Monitoring Dashboard - Karura Forest</h1>
+          Deforestation Monitoring Dashboard - Karura Forest
           </ SidebarItem>
         </Sidebar>
       </div>
@@ -45,13 +45,13 @@ export default function KaruraDashboard() {
           <Card className="md:col-span-1 rounded-md shadow-md">
             <CardContent>
               <h1 className='text-lg font-semibold'>Karura and environs land cover in 2020</h1>
-              <Image src={lulc2020} alt='LULC 2020 in Karura and Environs' width={500} height={400} className="rounded-md" onClick = {() => openModal(lulc2020)}/>
+              <Image src={lulc2020 as unknown as string} alt='LULC 2020 in Karura and Environs' width={500} height={400} className="rounded-md" onClick = {() => openModal(lulc2020 as unknown as string)}/>
             </CardContent>
           </Card>
           <Card className="md:col-span-1 rounded-md shadow-md">
             <CardContent>
               <h1 className='text-lg font-semibold'>Karura and environs land cover in 2025</h1>
-              <Image src={lulc2025} alt='LULC 2025 in Karura and Environs' width={500} height={400} className="rounded-md" onClick={() => openModal(lulc2025)}/>
+              <Image src={lulc2025 as unknown as string} alt='LULC 2025 in Karura and Environs' width={500} height={400} className="rounded-md" onClick={() => openModal(lulc2025 as unknown as string)}/>
             </CardContent>
           </Card>
 
@@ -60,7 +60,7 @@ export default function KaruraDashboard() {
           <Card className="md:col-span-1 rounded-md shadow-md">
             <CardContent>
               <h1 className='text-lg font-semibold'>Karura and environs deforestation hotspots</h1>
-              <Image src={deforestation} alt='Deforestation hotspots in Karura and Environs' width={500} height={400} className="rounded-md" onClick={() => openModal(deforestation)}/>
+              <Image src={deforestation as unknown as string} alt='Deforestation hotspots in Karura and Environs' width={500} height={400} className="rounded-md" onClick={() => openModal(deforestation as unknown as string)}/>
             </CardContent>
           </Card>
           <Card className="md:col-span-1 rounded-md shadow-md">
