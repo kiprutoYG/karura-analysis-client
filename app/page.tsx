@@ -1,11 +1,10 @@
 "use client"; // This tells the compiler to use the client-side runtime
 
 import React from 'react';
-import { useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import {Sidebar, SidebarItem} from './components/ui/sidebar.js';
 import {Card, CardContent} from './components/ui/card.js';
-import Map from './components/map.js';
+import NewsCard from './components/newscard.js';
 import Graph from './components/graph.js';
 import Image from 'next/image.js';
 import lulc2020 from './components/images/karura_2020_map.png'
@@ -13,25 +12,26 @@ import lulc2025 from './components/images/karura_2025_map.png'
 
 
 export default function KaruraDashboard() {
-  const [selectedLayer, setSelectedLayer] = useState('basemap');
 
   return (
     <div className="flex h-screen bg-green-900 text-white">
       <div className="w-1/5">
         <Sidebar className="bg-green-800">
-            <SidebarItem onClick={() => setSelectedLayer('basemap')}>Basemap</SidebarItem>
-            <SidebarItem onClick={() => setSelectedLayer('deforestation')}>
+            <SidebarItem onClick={() => <a href="#basemap"></a>}>Basemap</SidebarItem>
+            <SidebarItem onClick={() => <a href="#lulc"></a>}>
+              Land Cover
+            </SidebarItem>
+            <SidebarItem onClick={() => <a href="#hotspots"></a>}>
               Deforestation Hotspots
             </SidebarItem>
-            <SidebarItem onClick={() => setSelectedLayer('forestcover')}>
-              Forest Cover
+            <SidebarItem onClick={() => <a href="#change"></a>}>
+              Forest cover change over time
             </SidebarItem>
         </Sidebar>
       </div>
       {/*Main Content*/}
       <div className='w-4/5 flex flex-col'>
         <h1>Deforestation Monitoring Dashboard - Karura Forest</h1>
-        <Map selectedLayer={selectedLayer}/>
 
         {/*Analytics*/}
         <div className='mt-4 grid grid-cols-1 md:grid-cols-3'>
@@ -47,7 +47,9 @@ export default function KaruraDashboard() {
               <Graph/>
             </CardContent>
           </Card>
-          
+          <Card className="md:col-span-1 rounded-md shadow-md">
+            <NewsCard/>
+          </Card>
           <Card className="md:col-span-1 rounded-md shadow-md">
             <CardContent>
               <h1 className='text-lg font-semibold'>Karura and environs land cover in 2020</h1>

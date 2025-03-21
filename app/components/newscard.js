@@ -4,7 +4,7 @@ export default function NewsCard() {
     const [news, setNews] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/news")
+        fetch("https://karura-analysis-server.onrender.com/news")
           .then((res) => res.json())
           .then((data) => setNews(data))
           .catch((error) => console.error("Error fetching news:", error));
