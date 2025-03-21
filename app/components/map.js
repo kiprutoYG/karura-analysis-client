@@ -4,12 +4,12 @@ import React from "react";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
-import { LayerGroup, TileLayer } from "react-leaflet";
+import { TileLayer } from "react-leaflet";
 
 const MapContainer = dynamic(() => import('react-leaflet').then((module) => module.MapContainer), {ssr: false});
 
 
-export default function Map({ selectedLayer }) {
+export default function Map() {
     const [isClient, setIsClient] = useState(false);
     useEffect(() => {
         setIsClient(true)
@@ -19,23 +19,12 @@ export default function Map({ selectedLayer }) {
         return <p>Loading map...</p>
     }
         return (
-            <MapContainer center={[-1.234, 36.812]} zoom={13} style={{ height: "400px", width: "100%" }}>
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-                {/* Conditional Overlays */}
-                {selectedLayer === "hotspot" && (
-                    <LayerGroup>
-                    {/* Replace with actual TileLayer or GeoJSON */}
-                    <TileLayer url="https://yourserver.com/hotspots/{z}/{x}/{y}.png" />
-                    </LayerGroup>
-                )}
-
-                {selectedLayer === "trend" && (
-                    <LayerGroup>
-                    {/* Replace with actual TileLayer or GeoJSON */}
-                    <TileLayer url="https://yourserver.com/trend/{z}/{x}/{y}.png" />
-                    </LayerGroup>
-                )}
+            <div>
+            <MapContainer center={[-1.234, 36.828]} zoom={16} style={{height:'400px', width: "100%" }}>
+                <TileLayer url="https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"/>
             </MapContainer>
+            </div>
+
         )
     
 }

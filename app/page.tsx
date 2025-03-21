@@ -9,12 +9,13 @@ import Graph from './components/graph.js';
 import Image from 'next/image.js';
 import lulc2020 from './components/images/karura_2020_map.png'
 import lulc2025 from './components/images/karura_2025_map.png'
+import  Map from './components/map.js';
 
 
 export default function KaruraDashboard() {
 
   return (
-    <div className="flex h-screen bg-green-900 text-white">
+    <div className="flex h-full bg-green-900 text-white">
       <div className="w-1/5">
         <Sidebar className="bg-green-800">
             <SidebarItem onClick={() => <a href="#basemap"></a>}>Basemap</SidebarItem>
@@ -32,6 +33,9 @@ export default function KaruraDashboard() {
       {/*Main Content*/}
       <div className='w-4/5 flex flex-col'>
         <h1>Deforestation Monitoring Dashboard - Karura Forest</h1>
+        <section id='basemap'>
+          <Map/>
+        </section>
 
         {/*Analytics*/}
         <div className='mt-4 grid grid-cols-1 md:grid-cols-3'>
