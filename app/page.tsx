@@ -4,6 +4,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Dialog } from '@headlessui/react'; // Modal library
 import 'leaflet/dist/leaflet.css';
+import { Menu , X } from 'lucide-react';
 import {Sidebar, SidebarItem } from './components/ui/sidebar.js';
 import {Card, CardContent} from './components/ui/card.js';
 import NewsCard from './components/newscard.js';
@@ -18,6 +19,7 @@ import  Map from './components/map.js';
 export default function KaruraDashboard() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isSidebarOpen, setisSidebarOpen] = useState(false);
 
   const openModal = (image: string) => {
     setIsOpen(true);
@@ -25,36 +27,44 @@ export default function KaruraDashboard() {
   }
 
   return (
-    <div className="flex h-full bg-green-900 text-white">
-      <div className="w-1/5">
+    <div className='flex h-full bg-green-900 text-white'>
+    <div className={`fixed md:relative z-50  transition-all duration-300 bg-green-800 
+      ${isSidebarOpen ? "translate-x-0 w-64" : "-translate-x-full w-0 md:translate-x-0 md:w-1/5"} overflow-hidden`}>
         <Sidebar className= "h-full">
           <SidebarItem>
           Deforestation Monitoring Dashboard - Karura Forest
           </ SidebarItem>
         </Sidebar>
-      </div>
+    </div>
       {/*Main Content*/}
-      <div className='w-4/5 flex flex-col'>
-        <h1>Location of Karura Forest</h1>
-         <Map/>
-      
-
+      <div className='flex-1 flex flex-col'>
         {/*Analytics*/}
-        <div className='mt-4 grid grid-cols-1 md:grid-cols-3'>
+        <div className="p-4 bg-green-700 flex flex-row md:hidden justify-between">
+          <button onClick={() => setisSidebarOpen(true)} className="md:hidden">
+            <Menu size={28} />
+          </button>
+
+          <button onClick={() => setisSidebarOpen(false)} className="md:hidden">
+            <X size = {28}/>
+          </button>
+        
+        </div>
+        <h1 className='font-semibold text-lg py-4 mx-2'>Location of Karura Forest</h1>
+        <Map/>
           {/*Land Cover Maps*/}
-          <Card className="md:col-span-1 rounded-md shadow-md">
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+          <Card className=" rounded-md shadow-md">
             <CardContent>
               <h1 className='text-lg font-semibold'>Karura and environs land cover in 2020</h1>
               <Image src={lulc2020 as unknown as string} alt='LULC 2020 in Karura and Environs' width={500} height={400} className="rounded-md" onClick = {() => openModal(lulc2020 as unknown as string)}/>
             </CardContent>
           </Card>
-          <Card className="md:col-span-1 rounded-md shadow-md">
+          <Card className="rounded-md shadow-md">
             <CardContent>
               <h1 className='text-lg font-semibold'>Karura and environs land cover in 2025</h1>
               <Image src={lulc2025 as unknown as string} alt='LULC 2025 in Karura and Environs' width={500} height={400} className="rounded-md" onClick={() => openModal(lulc2025 as unknown as string)}/>
             </CardContent>
           </Card>
-
           
           {/*Deforestation Hotspots*/}
           <Card className="md:col-span-1 rounded-md shadow-md">
@@ -63,6 +73,8 @@ export default function KaruraDashboard() {
               <Image src={deforestation as unknown as string} alt='Deforestation hotspots in Karura and Environs' width={500} height={400} className="rounded-md" onClick={() => openModal(deforestation as unknown as string)}/>
             </CardContent>
           </Card>
+          </div>
+
           <Card className="md:col-span-1 rounded-md shadow-md">
             <CardContent>
               <h1 className='text-lg font-semibold'>Forest cover trend</h1>
@@ -94,9 +106,7 @@ export default function KaruraDashboard() {
             </div>
           </div>
         </Dialog>
-      </div>
-      <footer>
-      </footer>
     </div>
+  
   );
 }
