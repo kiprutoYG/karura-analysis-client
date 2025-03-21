@@ -5,7 +5,6 @@ import { useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import {Sidebar, SidebarItem} from './components/ui/sidebar.js';
 import {Card, CardContent} from './components/ui/card.js';
-import NewsCard from './components/newscard.js';
 import Map from './components/map.js';
 import Graph from './components/graph.js';
 import Image from 'next/image.js';
@@ -48,9 +47,7 @@ export default function KaruraDashboard() {
               <Graph/>
             </CardContent>
           </Card>
-          <Card className="md:col-span-1 rounded-md shadow-md">
-            <NewsCard/>
-          </Card>
+          
           <Card className="md:col-span-1 rounded-md shadow-md">
             <CardContent>
               <h1 className='text-lg font-semibold'>Karura and environs land cover in 2020</h1>
