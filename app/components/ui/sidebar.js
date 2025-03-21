@@ -6,14 +6,11 @@ export function Sidebar({ children, className }) {
     );
   }
   
-  export function SidebarItem({ children, onClick }) {
+  export function SidebarItem({ children }) {
     return (
-      <button
-        className="block w-full text-left p-2 rounded-md hover:bg-green-600"
-        onClick={onClick}
-      >
+      <p>
         {children}
-      </button>
+      </p>
     );
   }
   
