@@ -52,7 +52,7 @@ export default function Map() {
                     <Marker position={karuraForest} icon={customIcon}>
                     <Popup>
                         <span className="font-bold">Karura Forest</span> <br />
-                        One of Nairobi's largest urban forests.
+                        One of Nairobi&apos;s largest urban forests.
                     </Popup>
                     </Marker>
                 )}
