@@ -20,8 +20,8 @@ export default function NewsCard() {
                 <ul>
                     {news.slice(0,6).map((article, index) => (
                         <li key={index}>
-                            <a href={article.url} target="_blank" rel="noopener noreferrer" className="py-4"><span className="text-amber-300">{article.title}</span></a>
-                            <p>{article.description} - {new Date(article.publishedAt).toLocaleDateString()}</p>
+                            <a href={article.url} target="_blank" rel="noopener noreferrer" className="py-4 text-sm md:text-lg"><span className="text-amber-300">{article.title}</span></a>
+                            <p className="text-sm md:text-lg">{article.description} - {new Date(article.publishedAt).toLocaleDateString()}</p>
                         </li>
                     ))}
                 </ul>
