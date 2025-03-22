@@ -20,6 +20,7 @@ export default function KaruraDashboard() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isSidebarOpen, setisSidebarOpen] = useState(false);
+  const currentYear = new Date().getFullYear();
 
   const openModal = (image: string) => {
     setIsOpen(true);
@@ -32,36 +33,93 @@ export default function KaruraDashboard() {
       ${isSidebarOpen ? "translate-x-0 w-64" : "-translate-x-full w-0 md:translate-x-0 md:w-1/5"} overflow-hidden`}>
         <Sidebar className= "h-full">
           <SidebarItem>
-          Deforestation Monitoring Dashboard - Karura Forest
+          Contents:
           </ SidebarItem>
+          <ul>
+            <li>
+              <SidebarItem>
+                1. Location of Karura Forest
+              </SidebarItem>
+            </li>
+            <li>
+              <SidebarItem>
+                2. Land cover in Karura and environs in 2020
+              </SidebarItem>
+            </li>
+            <li>
+              <SidebarItem>
+                3. Land cover in Karura and environs in 2025
+              </SidebarItem>
+            </li>
+            <li>
+              <SidebarItem>
+                4. Deforestation hotspots in Karura and environs
+              </SidebarItem>
+            </li>
+            <li>
+              <SidebarItem>
+                5. Forest cover trend over the years
+              </SidebarItem>
+            </li>
+            <li>
+              <SidebarItem>
+                6. Latest news on forests in Kenya
+              </SidebarItem>
+            </li>
+            <li>
+              <SidebarItem>
+                7. Deforestation and afforestation rate since 2020
+              </SidebarItem>
+            </li>
+          </ul>
+          <SidebarItem>
+            Attributions:
+            <ul>
+              <li>1. Copernicus</li>
+              <li>2. World Imagery Basemap - ESRI</li>
+              <li>3. Flaticon Marker Icon</li>
+              <li>4. News API</li>
+            </ul>
+          </SidebarItem>
+          <SidebarItem>
+            Analysis and design by: <br/>
+            Yegon Kipruto Elkana <br/>
+            Geospatial Developer <br/>
+            <span className="text-lg font-semibold mt-2">Karura Analysis Dashboard
+              <span className="mt-2 text-sm">
+              &copy; {currentYear} | Created by <span className="font-bold">Elkana</span>
+              </span>
+            </span>
+          </SidebarItem>
+          
         </Sidebar>
     </div>
       {/*Main Content*/}
       <div className='flex-1 flex flex-col'>
         {/*Analytics*/}
         <div className="p-4 bg-green-700 flex flex-row md:hidden justify-between">
-          <button onClick={() => setisSidebarOpen(true)} className="md:hidden">
+          <button onClick={() => setisSidebarOpen(true)} className="md:hidden bg-green-700 hover:bg-green-600 active:scale-95 transition-all px-4 py-2 rounded-md shadow-md">
             <Menu size={28} />
           </button>
-
-          <button onClick={() => setisSidebarOpen(false)} className="md:hidden">
+          <h1 className='font-bold text-xl text-center p-4 md:hidden'>Karura Forest Analysis Dashboard </h1>
+          <button onClick={() => setisSidebarOpen(false)} className="md:hidden bg-green-700 hover:bg-green-600 active:scale-95 transition-all px-4 py-2 rounded-md shadow-md">
             <X size = {28}/>
-          </button>
-        
+          </button>   
         </div>
+        <h1 className='hidden md:block font-bold text-2xl text-center p-4'>Karura Forest Analysis Dashboard </h1>
         <h1 className='font-semibold text-lg py-4 mx-2'>Location of Karura Forest</h1>
         <Map/>
           {/*Land Cover Maps*/}
           <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           <Card className=" rounded-md shadow-md">
             <CardContent>
-              <h1 className='text-lg font-semibold'>Karura and environs land cover in 2020</h1>
+              <h1 className='font-semibold text-sm md:text-xl py-4 mx-2'>Karura and environs land cover in 2020</h1>
               <Image src={lulc2020 as unknown as string} alt='LULC 2020 in Karura and Environs' width={500} height={400} className="rounded-md" onClick = {() => openModal(lulc2020 as unknown as string)}/>
             </CardContent>
           </Card>
           <Card className="rounded-md shadow-md">
             <CardContent>
-              <h1 className='text-lg font-semibold'>Karura and environs land cover in 2025</h1>
+              <h1 className='font-semibold text-sm md:text-xl py-4 mx-2'>Karura and environs land cover in 2025</h1>
               <Image src={lulc2025 as unknown as string} alt='LULC 2025 in Karura and Environs' width={500} height={400} className="rounded-md" onClick={() => openModal(lulc2025 as unknown as string)}/>
             </CardContent>
           </Card>
@@ -69,15 +127,16 @@ export default function KaruraDashboard() {
           {/*Deforestation Hotspots*/}
           <Card className="md:col-span-1 rounded-md shadow-md">
             <CardContent>
-              <h1 className='text-lg font-semibold'>Karura and environs deforestation hotspots</h1>
+              <h1 className='font-semibold text-sm md:text-xl py-4 mx-2'>Karura and environs deforestation hotspots</h1>
               <Image src={deforestation as unknown as string} alt='Deforestation hotspots in Karura and Environs' width={500} height={400} className="rounded-md" onClick={() => openModal(deforestation as unknown as string)}/>
             </CardContent>
           </Card>
           </div>
 
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           <Card className="md:col-span-1 rounded-md shadow-md">
             <CardContent>
-              <h1 className='text-lg font-semibold'>Forest cover trend</h1>
+              <h1 className='font-semibold text-sm md:text-xl py-4 mx-2'>Forest cover trend</h1>
               <Graph/>
             </CardContent>
           </Card>
@@ -87,10 +146,11 @@ export default function KaruraDashboard() {
     
           <Card className="md:col-span-1 rounded-md shadow-md">
             <CardContent>
-              <h2>Deforestation Rate</h2>
+              <h2 className='font-semibold text-sm md:text-xl py-4 mx-2'>Deforestation Rate</h2>
               <p>0.5% per year</p>
             </CardContent>
           </Card>
+          </div>
         </div>
 
         {/* Image Modal */}

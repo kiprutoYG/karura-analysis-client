@@ -8,7 +8,7 @@ export function Sidebar({ children, className }) {
   
   export function SidebarItem({ children }) {
     return (
-      <p>
+      <p className="text-sm md:text-lg p-2">
         {children}
       </p>
     );

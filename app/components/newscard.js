@@ -13,14 +13,14 @@ export default function NewsCard() {
 
     return (
         <div className="news-card"> 
-            <h2>Latest news on Karura Forest</h2>
+            <h2 className="font-semibold text-sm md:text-xl py-4 mx-2">Latest news on Karura Forest</h2>
             {news.length === 0 ? (
                 <p>Loading news</p>
             ): (
                 <ul>
                     {news.slice(0,6).map((article, index) => (
                         <li key={index}>
-                            <a href={article.url} target="_blank" rel="noopener noreferrer">{article.title}</a>
+                            <a href={article.url} target="_blank" rel="noopener noreferrer" className="py-4"><span className="text-amber-300">{article.title}</span></a>
                             <p>{article.description} - {new Date(article.publishedAt).toLocaleDateString()}</p>
                         </li>
                     ))}
