@@ -8,9 +8,9 @@ export function Sidebar({ children, className }) {
   
   export function SidebarItem({ children }) {
     return (
-      <p className="text-sm md:text-lg p-2">
+      <div className="text-sm md:text-lg p-2">
         {children}
-      </p>
+      </div>
     );
   }
   

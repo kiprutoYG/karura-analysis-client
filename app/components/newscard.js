@@ -13,7 +13,7 @@ export default function NewsCard() {
 
     return (
         <div className="news-card"> 
-            <h2 className="font-semibold text-sm md:text-xl py-4 mx-2">Latest news on Karura Forest</h2>
+            <h2 className="font-semibold text-sm md:text-xl py-4 mx-2">Latest News on Forests in Kenya</h2>
             {news.length === 0 ? (
                 <p>Loading news</p>
             ): (
