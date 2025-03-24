@@ -128,13 +128,13 @@ export default function KaruraDashboard() {
             >
             <Card className=" rounded-md shadow-md">
               <CardContent>
-                <h1 className='font-semibold text-sm md:text-xl py-4 mx-2'>Karura and Environs Land Cover in 2020</h1>
+                <h1 className='font-semibold text-lg md:text-xl py-4 mx-2'>Karura and Environs Land Cover in 2020</h1>
                 <Image src={lulc2020 as unknown as string} alt='LULC 2020 in Karura and Environs' width={500} height={400} className="rounded-md" onClick = {() => openModal(lulc2020 as unknown as string)}/>
               </CardContent>
             </Card>
             <Card className="rounded-md shadow-md">
               <CardContent>
-                <h1 className='font-semibold text-sm md:text-xl py-4 mx-2'>Karura and Environs Land Cover in 2025</h1>
+                <h1 className='font-semibold text-lg md:text-xl py-4 mx-2'>Karura and Environs Land Cover in 2025</h1>
                 <Image src={lulc2025 as unknown as string} alt='LULC 2025 in Karura and Environs' width={500} height={400} className="rounded-md" onClick={() => openModal(lulc2025 as unknown as string)}/>
               </CardContent>
             </Card>
@@ -142,7 +142,7 @@ export default function KaruraDashboard() {
             {/*Deforestation Hotspots*/}
             <Card className="md:col-span-1 rounded-md shadow-md">
               <CardContent>
-                <h1 className='font-semibold text-sm md:text-xl py-4 mx-2'>Karura and Environs Deforestation Hotspots</h1>
+                <h1 className='font-semibold text-lg md:text-xl py-4 mx-2'>Karura and Environs Deforestation Hotspots</h1>
                 <Image src={deforestation as unknown as string} alt='Deforestation hotspots in Karura and Environs' width={500} height={400} className="rounded-md" onClick={() => openModal(deforestation as unknown as string)}/>
               </CardContent>
             </Card>
@@ -156,13 +156,13 @@ export default function KaruraDashboard() {
             >
               <Card className="md:col-span-1 rounded-md shadow-md">
                 <CardContent>
-                  <h1 className='font-semibold text-sm md:text-xl py-4 mx-2'>Forest Cover Trend</h1>
+                  <h1 className='font-semibold text-lg md:text-xl py-4 mx-2'>Forest Cover Trend</h1>
                   <Graph/>
                 </CardContent>
               </Card>
               <Card className="md:col-span-1 rounded-md shadow-md">
                 <CardContent>
-                  <h2 className='font-semibold text-sm md:text-xl py-4 mx-2'>Deforestation and Afforestation Statistics since 2020</h2>
+                  <h2 className='font-semibold text-lg md:text-xl py-4 mx-2'>Deforestation and Afforestation Statistics since 2020</h2>
                   <p className='text-sm md:text-lg py-4 mx-2'><span className='font-semibold'>Deforested area:</span> 0.446 km²</p>
                   <p className='text-sm md:text-lg py-4 mx-2'><span className='font-semibold'>Afforested area:</span> 0.337 km²</p>
                   <p className='text-sm md:text-lg py-4 mx-2'><span className='font-semibold'>Deforestation rate:</span> 4.44%</p>
