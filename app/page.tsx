@@ -96,7 +96,7 @@ export default function KaruraDashboard() {
             <hr className='opacity-30 py-4' />
             <span className='font-semibold mx-2 py-4 md:py-6 text-sm'>Note:</span><br />
             <hr className='opacity-30 py-4'/>
-            <span className="mt-1 text-xs md:text-sm opacity-75">The analysis results are subject to factors such as satellite resolution, data availability, and processing techniques.
+            <span className="mt-1 text-xs md:text-sm opacity-75 pb-4">The analysis results are subject to factors such as satellite resolution, data availability, and processing techniques.
                Variations in classification accuracy and temporal changes may also influence the measurements. 
               For precise validation, ground-truth data and higher-resolution imagery are recommended.</span>
           </SidebarItem>
