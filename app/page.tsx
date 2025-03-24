@@ -163,16 +163,22 @@ export default function KaruraDashboard() {
               <Card className="md:col-span-1 rounded-md shadow-md">
                 <CardContent>
                   <h2 className='font-semibold text-lg md:text-xl py-4 mx-2'>Deforestation and Afforestation Statistics since 2020</h2>
-                  <p className='text-sm md:text-lg py-4 mx-2'><span className='font-semibold'>Deforested area:</span> 0.446 km²</p>
-                  <p className='text-sm md:text-lg py-4 mx-2'><span className='font-semibold'>Afforested area:</span> 0.337 km²</p>
-                  <p className='text-sm md:text-lg py-4 mx-2'><span className='font-semibold'>Deforestation rate:</span> 4.44%</p>
-                  <p className='text-sm md:text-lg py-4 mx-2'><span className='font-semibold'>Afforestation rate:</span> 3.35%</p>
+                  <p className='text-sm md:text-lg py-4 mx-2'><span className='font-semibold'>Deforested area:</span> 1.039 km²</p>
+                  <p className='text-sm md:text-lg py-4 mx-2'><span className='font-semibold'>Afforested area:</span> 1.208 km²</p>
+                  <p className='text-sm md:text-lg py-4 mx-2'><span className='font-semibold'>Deforested percentage:</span> 10.3%</p>
+                  <p className='text-sm md:text-lg py-4 mx-2'><span className='font-semibold'>Afforested perentage:</span> 12%</p>
 
                   <p className='font-semibold text-sm md:text-lg'>Summary:</p>
-                  <p className='text-sm md:text-lg'>Since 2020, Karura Forest has experienced both deforestation and afforestation efforts. 
-                    While 0.446 km² of forest has been lost at a 4.44% deforestation rate, restoration initiatives have recovered 0.337 km², 
-                    achieving a 3.35% afforestation rate. Although afforestation is ongoing, 
-                    the gap highlights the need for stronger conservation strategies to balance forest loss and recovery.</p>
+                  <p className='text-sm md:text-lg'>Since 2020, the combined Karura Forest and its surrounding neighborhoods have experienced notable changes in vegetation cover. 
+                    While 1.039 km² has been deforested, afforestation efforts have outpaced the loss, with 1.208 km² newly covered by trees. 
+                    This positive trend suggests that tree planting initiatives and natural regeneration are contributing to a greener landscape.
+
+                    However, most of the deforestation has occurred this year, particularly around <span className='font-semibold'>Karura Forest Gate D</span>, where <span className='font-semibold'> 0.28 km² </span>of tree cover has been lost. 
+                    This deforestation is largely linked to a government initiative involving infrastructure expansion and land use changes. 
+                    While such projects aim to enhance accessibility and development, they also highlight the need for a balanced approach to conservation.
+
+                    Despite these changes, the overall trend reflects a commitment to preserving and expanding tree cover, 
+                    with afforestation efforts helping to offset losses and improve forest health in and around Karura Forest.</p>
                 </CardContent>
               </Card>
               <Card className="md:col-span-1 rounded-md shadow-md">
