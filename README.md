@@ -2,6 +2,9 @@
 
 This repository contains the **frontend client** for the Karura Forest Deforestation Monitoring Dashboard. The application provides an interactive and data-driven interface to visualize and monitor deforestation trends in Karura Forest. It is built using **Next.js** for performance and scalability, with a clean UI powered by **Tailwind CSS**.
 
+<img width="1908" height="993" alt="image" src="https://github.com/user-attachments/assets/14dae233-fe59-4b9d-9451-dddf6a238ac2" />
+
+
 ---
 
 ## Overview
